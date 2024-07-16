@@ -32,7 +32,9 @@ services:
       - "8000:8000"
     networks:
       - app-network
-
+    environment:
+      # debug
+      XDEBUG_MODE: off
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
