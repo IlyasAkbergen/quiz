@@ -18,4 +18,11 @@ class AnswerRepository extends ServiceEntityRepository implements AnswerReposito
     {
         parent::__construct($registry, Answer::class);
     }
+
+    public function save(Answer $answer): Answer
+    {
+        $this->getEntityManager()->persist($answer);
+
+        return $answer;
+    }
 }
