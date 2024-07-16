@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Repository\:
+    resource: '../src/Repository/'
+
+  App\Domain\Repository\QuestionRepositoryInterface: '@App\Repository\QuestionRepository'
+  App\Domain\Repository\AnswerRepositoryInterface: '@App\Repository\AnswerRepository'
