@@ -16,16 +16,11 @@ class Answer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
     #[ORM\ManyToOne(targetEntity: Question::class)]
     private ?Question $question = null;
 
-    #[ORM\Column]
-    private ?int $questionId = null;
-
-    #[ORM\Column]
-    #[ORM\ManyToOne(targetEntity: Test::class)]
-    private ?Test $test = null;
+    #[ORM\ManyToOne(targetEntity: Submission::class, inversedBy: 'answers')]
+    private ?Submission $submission = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $answers = [];
@@ -59,25 +54,15 @@ class Answer
         return $this;
     }
 
-    public function getTest(): ?Test
+    public function getSubmission(): ?Submission
     {
-        return $this->test;
+        return $this->submission;
     }
 
-    public function setTest(Test $test): static
+    public function setSubmission(Submission $submission): static
     {
-        $this->test = $test;
+        $this->submission = $submission;
 
         return $this;
-    }
-
-    public function getQuestionId(): ?int
-    {
-        return $this->questionId;
-    }
-
-    public function setQuestionId(?int $questionId): void
-    {
-        $this->questionId = $questionId;
     }
 }

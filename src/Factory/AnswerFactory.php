@@ -11,8 +11,9 @@ class AnswerFactory
     public static function create(array $data): Answer
     {
         $answer = new Answer();
-        $answer->setQuestionId($data['question_id']);
+        $answer->setQuestion($data['question']);
         $answer->setAnswers($data['answers']);
+        $answer->setSubmission($data['submission']);
 
         return $answer;
     }
